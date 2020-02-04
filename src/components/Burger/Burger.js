@@ -1,8 +1,10 @@
 import React from 'react';
 
+import classes from './Burger.css';
+
 const burger = (props) => {
     return (
-        <div>
+        <div className={classes.Burger}>
 
         </div>
     );

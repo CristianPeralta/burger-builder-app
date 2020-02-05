@@ -12,8 +12,19 @@ class BurgerBuilder extends Component {
             salad: 0,
             meat: 0,
             cheese: 0,
+            bacon: 0,
         },
     };
+
+    addIngredientHandler = (type) => {
+        const oldCount = this.state.ingredients[type];
+        const updatedCounted = oldCount + 1;
+        const updatedIngredients = {
+            ...this.state.ingredients
+        };
+        updatedIngredients[type] = updatedCounted;
+        this.setState({ ingredients: updatedIngredients});
+    }
 
     render() {
         return (

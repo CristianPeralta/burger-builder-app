@@ -12,6 +12,9 @@ const burger = (props) => {
                 return <BurgerIngredient key={ingKey + i} type={ingKey}/>
             })
         })
+        .reduce((arr, i) => {
+            return [...arr, ...i];
+        }, []);
     return (
         <div className={classes.Burger}>
             <BurgerIngredient type="bread-top"/>

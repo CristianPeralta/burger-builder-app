@@ -4,9 +4,20 @@ import classes from './BuildControls.css';
 
 import BuildControl from './BuildControl/BuildControl';
 
+const controls = [
+    { label: 'Salad', type: 'salad'},
+    { label: 'Cheese', type: 'cheese'},
+    { label: 'Bacon', type: 'bacon'},
+    { label: 'Meat', type: 'meat'},
+];
+
 const buildControls = (props) => (
     <div className={classes.BuildControls}>
-        <BuildControl label="Salad"/>
+        {
+            controls.map(control => {
+                return <BuildControl key={control.label} label={control.label} />
+            })
+        }
     </div>
 );
 

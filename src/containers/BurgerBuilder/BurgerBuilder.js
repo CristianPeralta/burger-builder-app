@@ -57,7 +57,7 @@ class BurgerBuilder extends Component {
         this.updatePurchaseState(updatedIngredients);
     }
 
-    updatePurchaseState (ingredients) {
+    updatePurchaseState = (ingredients) => {
 
         const sum = Object.keys(ingredients)
             .map(igKey => {
@@ -82,7 +82,7 @@ class BurgerBuilder extends Component {
         }
         return (
             <Aux>
-                <Modal>
+                <Modal show={this.state.purchasing}>
                     <OrderSummary ingredients={this.state.ingredients}></OrderSummary>
                 </Modal>
                 <Burger 

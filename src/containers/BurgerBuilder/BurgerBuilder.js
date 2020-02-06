@@ -21,6 +21,7 @@ class BurgerBuilder extends Component {
             cheese: 0,
             bacon: 0,
         },
+        purchaseable: false,
         totalPrice: 4,
     };
 
@@ -51,6 +52,20 @@ class BurgerBuilder extends Component {
         const priceDeduction = INGREDIENT_PRICE[type];
         const newPrice = oldPrice - priceDeduction;
         this.setState({ ingredients: updatedIngredients, totalPrice: newPrice });
+    }
+
+    updatePurchaseState () {
+        const ingredients = {
+            ...this.state.purchaseable,
+        }
+
+        const sum = Object.keys(ingredients)
+            .map(igKey => {
+                return ingredients[igKey];
+            })
+            .reduce((sum, item) => sum + item, 0);
+
+        this.setState({ purchaseable: sum > 0 });
     }
 
     render() {

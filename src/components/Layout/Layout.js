@@ -6,11 +6,14 @@ import Toolbar from '../Navigation/Toolbar/Toolbar';
 import SideDrawer from '../Navigation/SideDrawer/SideDrawer';
 
 class Layout extends Component {
+    state = {
+        showSideDrawer: true,
+    }
     render () {
         return (
             <Aux>
                 <Toolbar/>
-                <SideDrawer />
+                <SideDrawer open={ this.state.showSideDrawer }/>
                 <div> Toolbar, SideDrawer, BackDrop </div>
                 <main className={Classes.Content}>
                     {this.props.children}

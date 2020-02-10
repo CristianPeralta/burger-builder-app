@@ -8,7 +8,7 @@ import Backdrop from '../../UI/Backdrop/Backdrop';
 const sideDrawer = (props) => {
     return (
         <Aux>
-            <Backdrop />
+            <Backdrop show={props.showSideDrawer}/>
             <div className={classes.SideDrawer}>
                 <div className={classes.Logo}>
                     <Logo />

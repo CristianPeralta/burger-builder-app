@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import Classes from './Layout.css';
-import Aux from '../../hoc/Auxw';
+import Aux from '../../hoc/Auxw/Auxw';
 import Toolbar from '../Navigation/Toolbar/Toolbar';
 import SideDrawer from '../Navigation/SideDrawer/SideDrawer';
 

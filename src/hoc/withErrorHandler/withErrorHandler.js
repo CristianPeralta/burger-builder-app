@@ -1,11 +1,14 @@
 import React from 'react';
+import Aux from '../Auxw/Auxw';
 
-const withErrorHanlder = () => {
-    return (
-        <div>
-            With Error Handler
-        </div>
-    );
+const withErrorHanlder = (WrapperComponent) => {
+    return (props) => {
+        return (
+            <Aux>
+                <WrapperComponent {...props} />
+            </Aux>
+        );
+    };
 };
 
 export default withErrorHanlder;

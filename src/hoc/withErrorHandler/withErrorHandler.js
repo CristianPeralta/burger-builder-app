@@ -1,14 +1,18 @@
 import React from 'react';
 import Aux from '../Auxw/Auxw';
+import Modal from '../../components/UI/Modal/Modal';
 
-const withErrorHanlder = (WrapperComponent) => {
+const withErrorHandler = (WrapperComponent) => {
     return (props) => {
         return (
             <Aux>
+                <Modal>
+                    Something went worng!
+                </Modal>
                 <WrapperComponent {...props} />
             </Aux>
         );
     };
 };
 
-export default withErrorHanlder;
+export default withErrorHandler;

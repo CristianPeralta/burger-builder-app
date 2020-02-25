@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 
+import BuildControls from '../../components/Burger/BuildControls/BuildControls';
+import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
+import Spinner from '../../components/UI/Spinner/Spinner';
+import Modal from '../../components/UI/Modal/Modal';
+import Burger from '../../components/Burger/Burger';
 import axios from '../../axios-orders';
 import Aux from '../../hoc/Auxw/Auxw';
-import Burger from '../../components/Burger/Burger';
-import BuildControls from '../../components/Burger/BuildControls/BuildControls';
-import Modal from '../../components/UI/Modal/Modal';
-import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 
 const INGREDIENT_PRICE = {
     salad: 0.5,
@@ -115,6 +116,7 @@ class BurgerBuilder extends Component {
                         purchaseContinued={this.purchaseContinueHandler}
                         ></OrderSummary>
                 </Modal>
+                <Spinner />
                 <Burger 
                     ingredients={this.state.ingredients}
                 />

@@ -2,13 +2,22 @@ import React, { Component } from 'react';
 import Aux from '../Auxw/Auxw';
 import Modal from '../../components/UI/Modal/Modal';
 
-const withErrorHandler = (WrapperComponent) => {
+const withErrorHandler = (WrapperComponent, axios) => {
     return class extends Component {
         state = {
-            error: {
-                message: "Something went worng!",
-            }
+            error: null
         };
+
+        componentDidMount() {
+            axios.interceptors.request.use(req => {
+                this.setState({ error: null });
+                return req;
+            })
+
+            axios.interceptors.response.use(res => res, error => {
+                this.setState({ error });
+            });
+        }
 
         errorComfirmedHanlder = () => {
             this.setState({ error: null });

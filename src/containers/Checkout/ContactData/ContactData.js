@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Button from './../../../components/UI/Button/Button';
 
 class ContactData extends  Component {
     state = {
@@ -18,6 +19,7 @@ class ContactData extends  Component {
                     <input type="text" name="email" placeholder="Your Mail" />
                     <input type="text" name="street" placeholder="Street" />
                     <input type="text" name="postal" placeholder="Postal Code" />
+                    <Button btnType="success" >ORDER</Button>
                 </form>
             </div>
         );

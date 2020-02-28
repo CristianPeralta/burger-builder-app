@@ -1,5 +1,6 @@
 import React from 'react';
 import Burger from '../../Burger/Burger';
+import Button from '../../UI/Button/Button';
 
 const CheckoutSummary = (props) => {
     return (
@@ -8,6 +9,12 @@ const CheckoutSummary = (props) => {
             <div style={{width: '300px', height: '300px', margin: 'auto'}}>
                 <Burger ingredients={props.ingredients} />
             </div>
+            <Button
+                btnType="Danger"
+                clicked>CANCEL</Button>
+            <Button
+                btnType="Successr"
+                clicked>CONTINUE</Button>
         </div>
     )
 };

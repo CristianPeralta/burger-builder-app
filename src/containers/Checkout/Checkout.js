@@ -10,6 +10,11 @@ class Checkout extends Component {
             baccon: 1,
         }
     }
+
+    componentDidMount() {
+        console.log(this.props.location.search);
+    }
+
     checkoutCancelledHandler = () => {
         this.props.history.goBack();
     }

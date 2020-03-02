@@ -11,6 +11,10 @@ class ContactData extends  Component {
             postalCode: '',
         }
     }
+
+    componentDidMount() {
+        console.log(this.props.ingredients);
+    }
     render() {
         return (
             <div className={classes.ContactData}>

@@ -8,7 +8,7 @@ import axios from '../../axios-orders';
 class Orders extends Component {
 
     state = {
-        orders: [1,2],
+        orders: [],
         loading: null
     }
 
@@ -35,7 +35,12 @@ class Orders extends Component {
         if (this.state.loading) {
             orders = <Spinner />;
         } else {
-            orders = this.state.orders.map(o => (<Order key={o.id} />));
+            orders = this.state.orders.map(order => (
+                <Order
+                    key={order.id}
+                    ingredients={order.ingredients}
+                    price={order.price} />
+            ));
         }
         return (
             <div>

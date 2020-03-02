@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
+import Order from '../../components/Order/Order';
 
 class Orders extends Component {
     render() {
         return (
             <div>
-                Orders container
+                <Order />
+                <Order />
             </div>
         );
     }

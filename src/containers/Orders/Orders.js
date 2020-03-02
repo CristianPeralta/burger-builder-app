@@ -14,8 +14,14 @@ class Orders extends Component {
         this.setState({ loading: true });
         axios.get('/orders.json')
             .then(response => {
-                console.log(response);
-                this.setState({ loading: false });
+                const fetchOrders = [];
+                for (const key in response.data) {
+                    fetchOrders.push({
+                        ...response.data[key],
+                        id: key,
+                    });
+                }
+                this.setState({ loading: false, orders: fetchOrders });
             })
             .catch(error => {
                 this.setState({ loading: false });
@@ -27,7 +33,7 @@ class Orders extends Component {
         if (this.state.loading) {
             orders = <Spinner />;
         } else {
-            orders = this.state.orders.map(o => (<Order />));
+            orders = this.state.orders.map(o => (<Order key={o.id} />));
         }
         return (
             <div>

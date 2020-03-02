@@ -11,7 +11,16 @@ const order = (props) => {
     }
 
     const ingredientsOutput = ingredients.map(ig => {
-    return <span key={ig.name}> {ig.name} ({ig.mount}) </span>;
+    return <span
+        key={ig.name}
+        style={{
+            textTransform: 'capitalize',
+            display: 'inline-block',
+            margin: '0 8px',
+            border: '1px solid #ccc',
+            padding: '5px',
+        }}
+        > {ig.name} ({ig.mount}) </span>;
     });
     return (
         <div className={classes.Order}>

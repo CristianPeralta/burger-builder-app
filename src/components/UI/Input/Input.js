@@ -1,4 +1,5 @@
 import React from 'react';
+import classes from './Input.css';
 
 const input = (props) => {
     let inputElement = null;
@@ -14,7 +15,8 @@ const input = (props) => {
             break;
     }
     return (
-        <div>
+        <div >
+            <label>{props.label}</label>
             {inputElement}
         </div>
     );

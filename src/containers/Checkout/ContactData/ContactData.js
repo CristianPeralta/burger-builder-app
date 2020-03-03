@@ -28,7 +28,7 @@ class ContactData extends  Component {
                 elementType: 'input',
                 elementConfig: {
                     type: 'text',
-                    placeholder: 'XIP Code',
+                    placeholder: 'ZIP Code',
                 },
                 value: ''
             },
@@ -79,6 +79,23 @@ class ContactData extends  Component {
                 this.setState({ loading: false });
             });
     }
+
+    inputChangeHandler = (event, inputIdentifier) => {
+        const updatedForm = {
+            ...this.state.orderForm,
+        };
+
+        const updatedFormElement = {
+            ...updatedForm[inputIdentifier],
+        };
+
+        updatedFormElement.value = event.target.value;
+
+        updatedForm[inputIdentifier] = updatedFormElement;
+
+        this.setState({ orderForm: updatedForm });
+    }
+
     render() {
         const formElementsFromArray = [];
         for (const key in this.state.orderForm) {
@@ -95,7 +112,8 @@ class ContactData extends  Component {
                         key={formElement.id}
                         elementType={formElement.config.elementType}
                         elementConfig={formElement.config.elementConfig}
-                        value={formElement.value} />
+                        value={formElement.value}
+                        changed={(event) => this.inputChangeHandler(event, formElement.id)} />
                 ))}
                 <Button btnType="Success" clicked={this.orderHandler} >ORDER</Button>
             </form>

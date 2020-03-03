@@ -136,7 +136,6 @@ class ContactData extends  Component {
         updatedFormElement.value = event.target.value;
         updatedFormElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation);
         updatedForm[inputIdentifier] = updatedFormElement;
-        console.log(updatedFormElement);
         this.setState({ orderForm: updatedForm });
     }
 
@@ -157,6 +156,7 @@ class ContactData extends  Component {
                         elementType={formElement.config.elementType}
                         elementConfig={formElement.config.elementConfig}
                         value={formElement.value}
+                        invalid={!formElement.valid}
                         changed={(event) => this.inputChangeHandler(event, formElement.id)} />
                 ))}
                 <Button btnType="Success" >ORDER</Button>

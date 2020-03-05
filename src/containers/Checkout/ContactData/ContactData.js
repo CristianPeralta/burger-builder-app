@@ -104,7 +104,7 @@ class ContactData extends  Component {
         }
         this.setState({ loading: true });
         const order = {
-            ingredients: this.props.ingredients,
+            ingredients: this.props.ings,
             price: Number(this.props.price).toFixed(2),
             orderData: formData,
         };

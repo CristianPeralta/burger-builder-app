@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
+import { ADD_INGREDIENT, REMOVE_INGREDIENT } from '../../store/actions';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 import WithErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
@@ -151,4 +153,10 @@ class BurgerBuilder extends Component {
     }
 }
 
-export default WithErrorHandler(BurgerBuilder, axios);
+const mapStateToProps = state => {
+    return {
+        ings: state.ingredients,
+    };
+};
+
+export default connect(mapStateToProps)(WithErrorHandler(BurgerBuilder, axios));

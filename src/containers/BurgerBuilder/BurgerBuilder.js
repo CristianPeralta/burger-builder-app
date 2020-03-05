@@ -20,10 +20,8 @@ const INGREDIENT_PRICE = {
 
 class BurgerBuilder extends Component {
     state = {
-        ingredients: null,
         purchasable: false,
         purchasing: false,
-        totalPrice: 4,
         loading: false,
         error: false,
     };
@@ -93,7 +91,7 @@ class BurgerBuilder extends Component {
         for (const i in this.props.ings) {
             queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.props.ings[i]));
         }
-        queryParams.push('price=' + this.state.totalPrice);
+        queryParams.push('price=' + this.props.price);
         const queryString = queryParams.join('&');
         this.props.history.push({
             pathname: '/checkout',
@@ -121,17 +119,17 @@ class BurgerBuilder extends Component {
                     />
                     <BuildControls
                         ingredientAdded={this.props.onIngredientsAdded}
-                        ingredientRemoved={this.props.onIngredientsRemovedr}
+                        ingredientRemoved={this.props.onIngredientsRemoved}
                         disabled={disabledInfo}
                         purchasable={this.state.purchasable}
                         ordered={this.purchaseHandler}
-                        price={this.state.totalPrice}
+                        price={this.props.price}
                     />
                 </Aux>
             );
             orderSummary = <OrderSummary 
                 ingredients={this.props.ings}
-                price={this.state.totalPrice}
+                price={this.props.price}
                 purchaseCancelled={this.purchaseCancelHandler}
                 purchaseContinued={this.purchaseContinueHandler}
                 ></OrderSummary>;
@@ -156,6 +154,7 @@ class BurgerBuilder extends Component {
 const mapStateToProps = state => {
     return {
         ings: state.ingredients,
+        price: state.price,
     };
 };
 

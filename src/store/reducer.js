@@ -1,7 +1,12 @@
 import { ADD_INGREDIENT, REMOVE_INGREDIENT } from './actions';
 
 const initialState = {
-    ingredients: null,
+    ingredients: {
+        salad: 0,
+        meat: 0,
+        cheese: 0,
+        bacon: 0
+    },
     price: 4
 };
 

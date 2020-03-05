@@ -159,4 +159,11 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps)(WithErrorHandler(BurgerBuilder, axios));
+const mapDispatchToProps = dispatch => {
+    return {
+        onIngredientsAdded: ingName => dispatch({ type: ADD_INGREDIENT, ingredientName: ingName }),
+        onIngredientsRemoved: ingName => dispatch({ type: REMOVE_INGREDIENT, ingredientName: ingName }),
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(WithErrorHandler(BurgerBuilder, axios));

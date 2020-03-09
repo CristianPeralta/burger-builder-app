@@ -1,5 +1,5 @@
 import axios from '../../axios-orders';
-import { ADD_INGREDIENT, REMOVE_INGREDIENT, FETCH_INGREDIENTS_FAILED } from './actionsTypes';
+import { ADD_INGREDIENT, REMOVE_INGREDIENT, FETCH_INGREDIENTS_FAILED, SET_INGREDIENTS } from './actionsTypes';
 
 export const addIngredient = (name) => {
     return {
@@ -18,7 +18,7 @@ export const removeIngredient = (name) => {
 
 export const setIngredients = (ingredients) => {
     return {
-        type: REMOVE_INGREDIENT,
+        type: SET_INGREDIENTS,
         ingredients: ingredients,
     };
 };

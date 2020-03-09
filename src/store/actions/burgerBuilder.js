@@ -1,4 +1,4 @@
-import { ADD_INGREDIENT } from './actionsTypes';
+import { ADD_INGREDIENT, REMOVE_INGREDIENT } from './actionsTypes';
 
 export const addIngredient = (name) => {
     return {
@@ -10,7 +10,7 @@ export const addIngredient = (name) => {
 
 export const removeIngredient = (name) => {
     return {
-        type: ADD_INGREDIENT,
+        type: REMOVE_INGREDIENT,
         ingredientName: name,
     };
 };

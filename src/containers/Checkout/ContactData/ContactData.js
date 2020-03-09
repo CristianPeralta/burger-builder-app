@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import withErrorHandler from '../../../hoc/withErrorHandler/withErrorHandler';
 import Button from './../../../components/UI/Button/Button';
 import Spinner from '../../../components/UI/Spinner/Spinner';
 import Input from '../../../components/UI/Input/Input';
@@ -102,7 +103,7 @@ class ContactData extends  Component {
         for (const formElementIdentifier in this.state.orderForm) {
             formData[formElementIdentifier] = this.state.orderForm[formElementIdentifier].value;
         }
-        this.setState({ loading: true });
+        // this.setState({ loading: true });
         const order = {
             ingredients: this.props.ings,
             price: Number(this.props.price).toFixed(2),
@@ -201,4 +202,4 @@ const mapStateToProps = state => {
     };
 };
 
-export default connect(mapStateToProps)(ContactData);
+export default connect(mapStateToProps)(withErrorHandler(ContactData, axios));

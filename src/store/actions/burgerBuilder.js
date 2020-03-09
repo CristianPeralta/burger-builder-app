@@ -1,5 +1,5 @@
 import axios from '../../axios-orders';
-import { ADD_INGREDIENT, REMOVE_INGREDIENT } from './actionsTypes';
+import { ADD_INGREDIENT, REMOVE_INGREDIENT, FETCH_INGREDIENTS_FAILED } from './actionsTypes';
 
 export const addIngredient = (name) => {
     return {
@@ -23,6 +23,12 @@ export const setIngredients = (ingredients) => {
     };
 };
 
+export const fetchIngredientsFailed = () => {
+    return {
+        type: FETCH_INGREDIENTS_FAILED,
+    };
+};
+
 export const initIngredients = () => {
     return dispatch => {
         axios.get('https://react-my-burger-eb284.firebaseio.com/ingredients.json')
@@ -30,7 +36,7 @@ export const initIngredients = () => {
                dispatch(setIngredients(response.data));
             })
             .catch(error=>{
-                // SET INGREDIENTS
+                dispatch(fetchIngredientsFailed());
             });
     };
 };

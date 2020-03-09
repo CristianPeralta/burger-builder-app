@@ -1,13 +1,9 @@
 import { ADD_INGREDIENT, REMOVE_INGREDIENT } from '../actions/actionsTypes';
 
 const initialState = {
-    ingredients: {
-        salad: 0,
-        meat: 0,
-        cheese: 0,
-        bacon: 0
-    },
-    price: 4
+    ingredients: null,
+    price: 4,
+    error: false,
 };
 
 const INGREDIENT_PRICE = {

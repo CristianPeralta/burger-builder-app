@@ -1,4 +1,4 @@
-import { PURCHASE_BURGER_SUCCESS, PURCHASE_BURGER_FAIL  } from '../actions/actionsTypes';
+import { PURCHASE_BURGER_START, PURCHASE_BURGER_SUCCESS, PURCHASE_BURGER_FAIL  } from '../actions/actionsTypes';
 
 const initialState = {
     orders: [],
@@ -7,6 +7,11 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
+        case PURCHASE_BURGER_START:
+            return {
+                ...state,
+                loading: true,
+            };
         case PURCHASE_BURGER_SUCCESS:
             const newOrder = {
                 ...action.orderData,
@@ -20,6 +25,7 @@ const reducer = (state = initialState, action) => {
         case PURCHASE_BURGER_FAIL:
             return {
                 ...state,
+                loading: false,
             };
         default: return state;
     }

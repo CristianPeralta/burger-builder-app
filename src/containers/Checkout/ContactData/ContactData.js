@@ -7,7 +7,7 @@ import Spinner from '../../../components/UI/Spinner/Spinner';
 import Input from '../../../components/UI/Input/Input';
 import axios from '../../../axios-orders';
 import classes from './ContactData.css';
-import { purchaseBurgerStart } from '../../../store/actions/index';
+import { purchaseBurger } from '../../../store/actions/index';
 
 class ContactData extends  Component {
     state = {
@@ -93,7 +93,6 @@ class ContactData extends  Component {
             }
         },
         isValidForm: false,
-        loading: false,
     }
 
     orderHandler = (event) => {
@@ -186,7 +185,7 @@ class ContactData extends  Component {
                 <Button disabled={!this.state.isValidForm} btnType="Success" >ORDER</Button>
             </form>
         );
-        if (this.state.loading) {
+        if (this.props.loading) {
             form = (<Spinner />);
         }
         return (
@@ -202,12 +201,13 @@ const mapStateToProps = state => {
     return {
         ings: state.ingredients,
         price: state.price,
+        loading: state.loading,
     };
 };
 
 const matchDispatchProps = dispatch => {
     return {
-        onOrderBurger: (orderData) => dispatch(purchaseBurgerStart(orderData))
+        onOrderBurger: (orderData) => dispatch(purchaseBurger(orderData))
     };
 };
 

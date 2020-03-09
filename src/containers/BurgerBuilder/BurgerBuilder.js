@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { ADD_INGREDIENT, REMOVE_INGREDIENT } from '../../store/actions';
+import { ADD_INGREDIENT, REMOVE_INGREDIENT } from '../../store/actions/actionsTypes';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 import WithErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';

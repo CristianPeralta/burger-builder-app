@@ -7,10 +7,6 @@ import { purchaseInit } from '../../store/actions/index';
 
 class Checkout extends Component {
 
-    componentWillMount() {
-        this.props.onInitPurchase();
-    }
-
     checkoutCancelledHandler = () => {
         this.props.history.goBack();
     }
@@ -46,10 +42,5 @@ const mapStateToProps = state => {
     };
 };
 
-const mapDispatchProps = dispatch => {
-    return {
-        onInitPurchase: () => dispatch(purchaseInit()),
-    };
-};
 
-export default connect(mapStateToProps, mapDispatchProps)(Checkout);
+export default connect(mapStateToProps)(Checkout);

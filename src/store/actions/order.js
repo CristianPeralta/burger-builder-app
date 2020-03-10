@@ -1,5 +1,13 @@
 import axios from '../../axios-orders';
-import { PURCHASE_INIT, PURCHASE_BURGER_START, PURCHASE_BURGER_SUCCESS, PURCHASE_BURGER_FAIL } from './actionsTypes';
+import {
+    PURCHASE_INIT,
+    PURCHASE_BURGER_START,
+    PURCHASE_BURGER_SUCCESS,
+    PURCHASE_BURGER_FAIL,
+    FETCH_ORDERS_START,
+    FETCH_ORDERS_SUCCESS,
+    FETCH_ORDERS_FAIL,
+} from './actionsTypes';
 
 export const purchaseBurgerSuccess = (id, orderData) => {
     return {
@@ -25,6 +33,26 @@ export const purchaseBurgerStart = () => {
 export const purchaseInit = () => {
     return {
         type: PURCHASE_INIT,
+    };
+};
+
+export const fetchOrdersSuccess = (orders) => {
+    return {
+        type: FETCH_ORDERS_SUCCESS,
+        orders: orders,
+    };
+};
+
+export const fetchOrdersFail = (error) => {
+    return {
+        type: FETCH_ORDERS_FAIL,
+        error: error,
+    };
+};
+
+export const fetchOrderStart = () => {
+    return {
+        type: FETCH_ORDERS_START,
     };
 };
 

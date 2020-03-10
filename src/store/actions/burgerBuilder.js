@@ -8,7 +8,6 @@ export const addIngredient = (name) => {
     };
 };
 
-
 export const removeIngredient = (name) => {
     return {
         type: REMOVE_INGREDIENT,

@@ -1,4 +1,5 @@
 import axios from '../../axios-orders';
+
 import {
     PURCHASE_INIT,
     PURCHASE_BURGER_START,
@@ -53,6 +54,25 @@ export const fetchOrdersFail = (error) => {
 export const fetchOrderStart = () => {
     return {
         type: FETCH_ORDERS_START,
+    };
+};
+
+export const fetchOrders = () => {
+    return dispatch => {
+        axios.get('/orders.json')
+            .then(response => {
+                const fetchOrders = [];
+                for (const key in response.data) {
+                    fetchOrders.push({
+                        ...response.data[key],
+                        id: key,
+                    });
+                }
+                dispatch(fetchOrdersSuccess(fetchOrders));
+            })
+            .catch(error => {
+                dispatch(fetchOrdersFail(error));
+            });
     };
 };
 

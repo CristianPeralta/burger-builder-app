@@ -103,7 +103,6 @@ class ContactData extends  Component {
         for (const formElementIdentifier in this.state.orderForm) {
             formData[formElementIdentifier] = this.state.orderForm[formElementIdentifier].value;
         }
-        // this.setState({ loading: true });
         const order = {
             ingredients: this.props.ings,
             price: Number(this.props.price).toFixed(2),
@@ -111,14 +110,6 @@ class ContactData extends  Component {
         };
 
         this.props.onOrderBurger(order);
-        /* axios.post('/orders.json', order)
-            .then(response => {
-                this.setState({ loading: false });
-                this.props.history.push('/');
-            })
-            .catch(error => {
-                this.setState({ loading: false });
-            }); */
     }
 
     checkValidity(value, rules) {

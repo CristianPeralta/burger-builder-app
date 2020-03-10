@@ -10,21 +10,16 @@ import { fetchOrders } from '../../store/actions/index';
 
 class Orders extends Component {
 
-    state = {
-        orders: [],
-        loading: null
-    }
-
     componentDidMount() {
         this.props.onFetchOrders();
     }
 
     render() {
         let orders = null;
-        if (this.state.loading) {
+        if (this.props.loading) {
             orders = <Spinner />;
         } else {
-            orders = this.state.orders.map(order => (
+            orders = this.props.orders.map(order => (
                 <Order
                     key={order.id}
                     ingredients={order.ingredients}
@@ -39,10 +34,16 @@ class Orders extends Component {
     }
 }
 
-const mapDispatchProps = dispatch => {
+const mapStateToProps = state => {
+    return {
+        orders: state.order.orders,
+        loading: state.order.loading,
+    };
+};
+const mapDispatchToProps = dispatch => {
     return {
         onFetchOrders: () => dispatch(fetchOrders()),
     };
 };
 
-export default connect(null, mapDispatchProps)(withErrorHandler(Orders, axios));
+export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(Orders, axios));

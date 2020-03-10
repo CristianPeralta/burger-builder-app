@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import Order from '../../components/Order/Order';
 import axios from '../../axios-orders';
+
+import { fetchOrders } from '../../store/actions/index';
 
 class Orders extends Component {
 
@@ -13,21 +16,7 @@ class Orders extends Component {
     }
 
     componentDidMount() {
-        this.setState({ loading: true });
-        axios.get('/orders.json')
-            .then(response => {
-                const fetchOrders = [];
-                for (const key in response.data) {
-                    fetchOrders.push({
-                        ...response.data[key],
-                        id: key,
-                    });
-                }
-                this.setState({ loading: false, orders: fetchOrders });
-            })
-            .catch(error => {
-                this.setState({ loading: false });
-            });
+        this.props.onFetchOrders();
     }
 
     render() {
@@ -50,4 +39,10 @@ class Orders extends Component {
     }
 }
 
-export default withErrorHandler(Orders, axios);
+const mapDispatchProps = dispatch => {
+    return {
+        onFetchOrders: () => dispatch(fetchOrders()),
+    };
+};
+
+export default connect(null, mapDispatchProps)(withErrorHandler(Orders, axios));

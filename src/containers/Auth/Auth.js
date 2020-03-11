@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Input from '../../components/UI/Input/Input';
 
 class Auth extends Component {
     state = {
@@ -34,9 +35,21 @@ class Auth extends Component {
         }
     }
     render() {
+        const formElementsFromArray = [];
+        for (const key in this.state.orderForm) {
+            formElementsFromArray.push({
+                id: key,
+                config: this.state.orderForm[key],
+            });
+        }
+
+        const form = formElementsFromArray.map(formElement => (
+            <Input key={formElement.id} />
+        ))
+
         return (
             <div>
-                AUTH
+                {form}
             </div>
         );
     }

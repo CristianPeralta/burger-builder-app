@@ -3,8 +3,16 @@ import {
     AUTH_SUCCESS,
     AUTH_FAIL,
 } from './/../actions/actionsTypes';
+import { initIngredients } from '../actions';
 
-const reducer = (state, action) => {
+const initialState = {
+    token: null,
+    userId: null,
+    error: null,
+    loading: false,
+};
+
+const reducer = (state = initialState, action) => {
     switch (action.type) {
         case AUTH_START: return;
         case AUTH_SUCCESS: return;

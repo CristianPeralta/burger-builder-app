@@ -39,7 +39,7 @@ const checkAuthTimeout = (expirationTime) => {
         setTimeout(() => {
             console.log('LOGOUT ASD');
             dispatch(logout());
-        }, expirationTime);
+        }, expirationTime * 1000);
     };
 };
 

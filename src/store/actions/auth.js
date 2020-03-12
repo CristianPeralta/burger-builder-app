@@ -34,6 +34,14 @@ export const logout = () => {
     };
 };
 
+const checkAuthTimeout = (expirationTime) => {
+    return dispatch => {
+        setTimeout(() => {
+            dispatch(logout());
+        }, expirationTime * 1000);
+    };
+};
+
 export const auth = (email, password, isSignUp) => {
     return dispatch => {
         const authData = {

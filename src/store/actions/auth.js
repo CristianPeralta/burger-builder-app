@@ -2,6 +2,7 @@ import {
     AUTH_START,
     AUTH_SUCCESS,
     AUTH_FAIL,
+    AUTH_LOGOUT,
 } from './actionsTypes';
 
 import axios from 'axios';
@@ -24,6 +25,12 @@ export const authFail = (error) => {
     return {
         type: AUTH_FAIL,
         error: error,
+    };
+};
+
+export const logout = () => {
+    return {
+        type: AUTH_LOGOUT,
     };
 };
 

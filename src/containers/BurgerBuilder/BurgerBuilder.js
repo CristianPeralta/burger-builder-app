@@ -68,6 +68,7 @@ class BurgerBuilder extends Component {
                         purchasable={this.updatePurchaseState(this.props.ings)}
                         ordered={this.purchaseHandler}
                         price={this.props.price}
+                        isAuthenticated={this.props.isAuthenticated}
                     />
                 </Aux>
             );
@@ -78,8 +79,6 @@ class BurgerBuilder extends Component {
                 purchaseContinued={this.purchaseContinueHandler}
                 ></OrderSummary>;
         }
-
-
 
         /* if (this.state.loading) {
             orderSummary = <Spinner />
@@ -100,6 +99,7 @@ const mapStateToProps = state => {
         ings: state.burgerBuilder.ingredients,
         price: state.burgerBuilder.price,
         error: state.burgerBuilder.error,
+        isAuthenticated: state.auth.token !== null,
     };
 };
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { addIngredient, removeIngredient, initIngredients, purchaseInit } from '../../store/actions/index';
+import { addIngredient, removeIngredient, initIngredients, purchaseInit, setAuthRedirectPath } from '../../store/actions/index';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 import WithErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
@@ -34,6 +34,7 @@ class BurgerBuilder extends Component {
         if (this.props.isAuthenticated) {
             this.setState({ purchasing: true });
         } else {
+            this.onSetAuthRedirectPath("/checkout");
             this.props.history.push('/auth');
         }
     }
@@ -113,6 +114,7 @@ const mapDispatchToProps = dispatch => {
         onIngredientsRemoved: ingName => dispatch(removeIngredient(ingName)),
         onInitIngredients: () => dispatch(initIngredients()),
         onInitPurchase: () => dispatch(purchaseInit()),
+        onSetAuthRedirectPath: (path) => dispatch(setAuthRedirectPath(path)),
     };
 };
 

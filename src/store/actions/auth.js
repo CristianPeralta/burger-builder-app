@@ -52,7 +52,7 @@ export const auth = (email, password, isSignUp) => {
             returnSecureToken: true,
         }
         dispatch(authStart());
-        let url = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=[APIKEY]';
+        let url = 'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=[API_KEY]';
         if (!isSignUp) {
             url = 'https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=[API_KEY]';
         }

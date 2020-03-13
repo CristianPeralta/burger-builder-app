@@ -3,6 +3,7 @@ import {
     AUTH_SUCCESS,
     AUTH_FAIL,
     AUTH_LOGOUT,
+    SET_AUTH_REDIRECT_PATH,
 } from './actionsTypes';
 
 import axios from 'axios';
@@ -65,5 +66,12 @@ export const auth = (email, password, isSignUp) => {
                 console.log(error);
                 dispatch(authFail(error.response.data.error));
             });
+    };
+};
+
+export const setAuthRedirectPath = path => {
+    return {
+        type: SET_AUTH_REDIRECT_PATH,
+        path: path,
     };
 };

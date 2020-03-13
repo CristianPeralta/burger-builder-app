@@ -8,7 +8,7 @@ import { Redirect } from 'react-router-dom';
 import classes from './Auth.css';
 
 import { connect } from 'react-redux';
-import { auth } from '../../store/actions/index';
+import { auth, setAuthRedirectPath } from '../../store/actions/index';
 
 class Auth extends Component {
     state = {
@@ -152,12 +152,15 @@ const mapStateToProps = state => {
         loading: state.auth.loading,
         error: state.auth.error,
         isAuthenticated: state.auth.token !== null,
+        buildingBurger: state.burgerBuilder.building,
+        authRedirectPath: state.auth.authRedirectPath,
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
         onAuth: (email, password, isSignUp) => dispatch(auth(email, password, isSignUp)),
+        onSetAuthRedirectPath => () => dispatch(setAuthRedirectPath("/")),
     };
 };
 

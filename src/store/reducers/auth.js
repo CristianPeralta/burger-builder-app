@@ -3,6 +3,7 @@ import {
     AUTH_SUCCESS,
     AUTH_FAIL,
     AUTH_LOGOUT,
+    SET_AUTH_REDIRECT_PATH,
 } from './/../actions/actionsTypes';
 
 import { updateObject } from  '../utility.js';
@@ -36,12 +37,17 @@ const authLogout = (state, action) => {
     return updateObject(state, { token: null, userId: null });
 };
 
+const setAthRedirectPath = (state, action) => {
+    return updateObject(state, { authRedirectPaht: action.path });
+};
+
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case AUTH_START: return authStart(state, action);
         case AUTH_SUCCESS: return authSuccess(state, action);
         case AUTH_FAIL: return authFail(state, action);
         case AUTH_LOGOUT: return authLogout(state, action);
+        case SET_AUTH_REDIRECT_PATH: return setAthRedirectPath(state, action);
         default: return state;
     }
 };

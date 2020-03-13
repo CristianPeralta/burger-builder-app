@@ -13,7 +13,7 @@ const initialState = {
     userId: null,
     error: null,
     loading: false,
-    authRedirectPaht: "/",
+    authRedirectPath: "/",
 };
 
 const authStart = (state) => {

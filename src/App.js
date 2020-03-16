@@ -15,6 +15,7 @@ class App extends Component {
   }
 
   render() {
+    console.log('isAuthenticated', this.props.isAuthenticated);
     return (
       <div className="App">
         <Layout>
@@ -31,10 +32,16 @@ class App extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    isAuthenticated: state.auth.token !== null,
+  };
+};
+
 const mapDispatchToProps = dispatch => {
   return {
     onTryAutoSignUp: () => dispatch(authCheckState()),
   };
 };
 
-export default withRouter(connect(null, mapDispatchToProps)(App));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

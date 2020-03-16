@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { authCheckState } from './store/actions/index';
@@ -9,20 +9,26 @@ import Orders from './containers/Orders/Orders';
 import Auth from './containers/Auth/Auth';
 import Logout from './containers/Auth/Logout/Logout';
 
-function App() {
-  return (
-    <div className="App">
-      <Layout>
-        <Switch>
-          <Route path="/checkout" component={Checkout} />
-          <Route path="/orders" exact component={Orders} />
-          <Route path="/auth" exact component={Auth} />
-          <Route path="/logout" exact component={Logout} />
-          <Route path="/" exact component={BurgerBuilder} />
-        </Switch>
-      </Layout>
-    </div>
-  );
+class App extends Component {
+  componentDidMount() {
+    this.props.onTryAutoSignUp();
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <Layout>
+          <Switch>
+            <Route path="/checkout" component={Checkout} />
+            <Route path="/orders" exact component={Orders} />
+            <Route path="/auth" exact component={Auth} />
+            <Route path="/logout" exact component={Logout} />
+            <Route path="/" exact component={BurgerBuilder} />
+          </Switch>
+        </Layout>
+      </div>
+    );
+  }
 }
 
 const mapDispatchToProps = dispatch => {

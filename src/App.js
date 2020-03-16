@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Switch, withRouter } from 'react-router-dom';
+import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { authCheckState } from './store/actions/index';
 import Layout from './hoc/Layout/Layout';
@@ -19,6 +19,7 @@ class App extends Component {
       <Switch>
         <Route path="/auth" exact component={Auth} />
         <Route path="/" exact component={BurgerBuilder} />
+        <Redirect to="/" />
       </Switch>
     );
     if (this.props.isAuthenticated) {
@@ -29,6 +30,7 @@ class App extends Component {
           <Route path="/auth" exact component={Auth} />
           <Route path="/logout" exact component={Logout} />
           <Route path="/" exact component={BurgerBuilder} />
+          <Redirect to="/" />
         </Switch>
       );
     }

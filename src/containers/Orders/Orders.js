@@ -7,7 +7,6 @@ import Order from '../../components/Order/Order';
 import axios from '../../axios-orders';
 
 import { fetchOrders } from '../../store/actions/index';
-import { stat } from 'fs-extra';
 
 class Orders extends Component {
 

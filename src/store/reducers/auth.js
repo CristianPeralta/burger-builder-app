@@ -6,7 +6,7 @@ import {
     SET_AUTH_REDIRECT_PATH,
 } from './/../actions/actionsTypes';
 
-import { updateObject } from  '../utility.js';
+import { updateObject } from  '../../shared/utility';
 
 const initialState = {
     token: null,

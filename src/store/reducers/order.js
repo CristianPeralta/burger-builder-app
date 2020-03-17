@@ -8,7 +8,7 @@ import {
     FETCH_ORDERS_FAIL,
 } from '../actions/actionsTypes';
 
-import { updateObject } from '../utility';
+import { updateObject } from '../../shared/utility';
 
 const initialState = {
     orders: [],

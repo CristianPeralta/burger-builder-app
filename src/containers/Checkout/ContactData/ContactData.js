@@ -8,6 +8,7 @@ import Input from '../../../components/UI/Input/Input';
 import axios from '../../../axios-orders';
 import classes from './ContactData.css';
 import { purchaseBurger } from '../../../store/actions/index';
+import { updateObject } from '../../../shared/utility';
 
 class ContactData extends  Component {
     state = {
@@ -132,18 +133,15 @@ class ContactData extends  Component {
     }
 
     inputChangeHandler = (event, inputIdentifier) => {
-        const updatedForm = {
-            ...this.state.orderForm,
-        };
+        const updatedFormElement = updateObject(this.state.orderForm[inputIdentifier], {
+            value: event.target.value,
+            valid: this.checkValidity(event.target.value, this.state.orderForm[inputIdentifier].validation),
+            touched: true,
+        });
 
-        const updatedFormElement = {
-            ...updatedForm[inputIdentifier],
-        };
-
-        updatedFormElement.value = event.target.value;
-        updatedFormElement.valid = this.checkValidity(updatedFormElement.value, updatedFormElement.validation);
-        updatedFormElement.touched = true;
-        updatedForm[inputIdentifier] = updatedFormElement;
+        const updatedForm = updateObject(this.state.orderForm, {
+            [inputIdentifier]:  updatedFormElement,
+        });
         
         let isValidForm = true;
         for (const inputIdentifier in updatedForm) {

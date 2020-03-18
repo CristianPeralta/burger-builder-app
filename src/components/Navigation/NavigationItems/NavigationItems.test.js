@@ -17,6 +17,7 @@ describe('<NavigationItems />', () => {
     });
 
     it('should render two <NavigationItem /> elements if authenticated', () => {
+        wrapper.setProps({ isAuthenticated: true });
         expect(wrapper.find(NavigationItem)).toHaveLength(3);
     });
 });

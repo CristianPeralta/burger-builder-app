@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { configure, shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
 
@@ -10,8 +11,7 @@ configure({ adapter: new Adapter() });
 describe('<BurgerBuilder />', () => {
     let wrapper;
     beforeEach(() => {
-        console.log("as");
-        wrapper = shallow(<BurgerBuilder />);
+        wrapper = shallow(<BurgerBuilder onInitIngredients={() => ({})} />);
     });
 
     it('should render two <BurgerBuilder /> when receiving ingredients', () => {

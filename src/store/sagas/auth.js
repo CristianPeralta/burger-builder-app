@@ -2,7 +2,7 @@ import { put } from 'redux-saga/effects';
 
 import { AUTH_LOGOUT } from '../actions/actionsTypes';
 
-export function logoutSaga(action) {
+export function* logoutSaga(action) {
     yield localStorage.removeItem('token');
     yield localStorage.removeItem('expirationDate');
     yield localStorage.removeItem('userId');

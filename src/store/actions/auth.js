@@ -3,6 +3,7 @@ import {
     AUTH_SUCCESS,
     AUTH_FAIL,
     AUTH_LOGOUT,
+    AUTH_INITIATE_LOGOUT,
     SET_AUTH_REDIRECT_PATH,
 } from './actionsTypes';
 
@@ -30,11 +31,11 @@ export const authFail = (error) => {
 };
 
 export const logout = () => {
-    localStorage.removeItem('token');
+    /* localStorage.removeItem('token');
     localStorage.removeItem('expirationDate');
-    localStorage.removeItem('userId');
+    localStorage.removeItem('userId'); */
     return {
-        type: AUTH_LOGOUT,
+        type: AUTH_INITIATE_LOGOUT,
     };
 };
 

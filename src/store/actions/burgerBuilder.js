@@ -1,4 +1,3 @@
-import axios from '../../axios-orders';
 import { ADD_INGREDIENT, REMOVE_INGREDIENT, FETCH_INGREDIENTS_FAILED, SET_INGREDIENTS, INIT_INGREDIENTS } from './actionsTypes';
 
 export const addIngredient = (name) => {

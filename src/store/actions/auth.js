@@ -3,6 +3,7 @@ import {
     AUTH_SUCCESS,
     AUTH_FAIL,
     AUTH_CHECK_TIMEOUT,
+    AUTH_CHECK_STATE,
     AUTH_INITIATE_LOGOUT,
     AUTH_LOGOUT,
     AUTH_USER,
@@ -48,7 +49,7 @@ export const logoutSucced = () => {
 export const checkAuthTimeout = (expirationTime) => {
     return {
         type: AUTH_CHECK_TIMEOUT,
-        expirationTime: 10,
+        expirationTime: expirationTime,
     };
 };
 
@@ -69,19 +70,7 @@ export const setAuthRedirectPath = path => {
 };
 
 export const authCheckState = () => {
-    return dispatch => {
-        const token = localStorage.getItem('token');
-        if (!token) {
-            dispatch(logout());
-        } else {
-            const expirationDate = new Date(localStorage.getItem('expirationDate'));
-            if (expirationDate <= new Date()) {
-                dispatch(logout());
-            } else {
-                const userId = localStorage.getItem('userId');
-                dispatch(authSuccess(token, userId));
-                dispatch(checkAuthTimeout((expirationDate.getTime() - new Date().getTime()))/1000);
-            }
-        }
+    return {
+        type: AUTH_CHECK_STATE,
     };
 };

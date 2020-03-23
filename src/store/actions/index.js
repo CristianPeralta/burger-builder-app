@@ -12,6 +12,9 @@ export {
 
 export {
     auth,
+    authStart,
+    authSuccess,
+    authFail,
     logout,
     setAuthRedirectPath,
     authCheckState,

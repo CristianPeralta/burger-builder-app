@@ -1,6 +1,7 @@
 import axios from '../../axios-orders';
 
 import {
+    PURCHASE_BURGER,
     PURCHASE_INIT,
     PURCHASE_BURGER_START,
     PURCHASE_BURGER_SUCCESS,
@@ -79,14 +80,9 @@ export const fetchOrders = (token, userId) => {
 };
 
 export const purchaseBurger = (orderData, token) => {
-    return dispatch => {
-        dispatch(purchaseBurgerStart());
-        axios.post('/orders.json?auth=' + token, orderData)
-        .then(response => {
-            dispatch(purchaseBurgerSuccess(response.data.name, orderData));
-        })
-        .catch(error => {
-            dispatch(purchaseBurgerFail(error));
-        });
+    return {
+        type: PURCHASE_BURGER,
+        token: token,
+        orderData: orderData,
     };
 };

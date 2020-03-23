@@ -1,4 +1,4 @@
-import { put } from 'redux-saga/effects';
+import { put, delay } from 'redux-saga/effects';
 
 import { AUTH_LOGOUT } from '../actions/actionsTypes';
 
@@ -9,4 +9,9 @@ export function* logoutSaga(action) {
     yield put({
         type: AUTH_LOGOUT,
     });
+}
+
+export function* checkAuthTimeoutSaga(action) {
+    yield delay(action.expirationTime);
+    yield put(action.logout);
 }

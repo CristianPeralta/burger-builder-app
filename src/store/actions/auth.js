@@ -5,6 +5,7 @@ import {
     AUTH_CHECK_TIMEOUT,
     AUTH_INITIATE_LOGOUT,
     SET_AUTH_REDIRECT_PATH,
+    AUTH_LOGOUT,
 } from './actionsTypes';
 
 import axios from 'axios';
@@ -36,6 +37,12 @@ export const logout = () => {
     localStorage.removeItem('userId'); */
     return {
         type: AUTH_INITIATE_LOGOUT,
+    };
+};
+
+export const logoutSucced = () => {
+    return {
+        type: AUTH_LOGOUT,
     };
 };
 

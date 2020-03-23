@@ -1,11 +1,10 @@
-import axios from '../../axios-orders';
-
 import {
     PURCHASE_BURGER,
     PURCHASE_INIT,
     PURCHASE_BURGER_START,
     PURCHASE_BURGER_SUCCESS,
     PURCHASE_BURGER_FAIL,
+    FETCH_ORDERS,
     FETCH_ORDERS_START,
     FETCH_ORDERS_SUCCESS,
     FETCH_ORDERS_FAIL,
@@ -59,23 +58,10 @@ export const fetchOrderStart = () => {
 };
 
 export const fetchOrders = (token, userId) => {
-    return dispatch => {
-        dispatch(fetchOrderStart());
-        const queryParams = '?auth=' + token + '&orderBy="userId"&equalTo="' + userId + '"';
-        axios.get('/orders.json' + queryParams)
-            .then(response => {
-                const fetchOrders = [];
-                for (const key in response.data) {
-                    fetchOrders.push({
-                        ...response.data[key],
-                        id: key,
-                    });
-                }
-                dispatch(fetchOrdersSuccess(fetchOrders));
-            })
-            .catch(error => {
-                dispatch(fetchOrdersFail(error));
-            });
+    return {
+        type: FETCH_ORDERS,
+        token: token,
+        userId: userId,
     };
 };
 

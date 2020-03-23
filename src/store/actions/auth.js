@@ -2,7 +2,6 @@ import {
     AUTH_START,
     AUTH_SUCCESS,
     AUTH_FAIL,
-    AUTH_LOGOUT,
     AUTH_INITIATE_LOGOUT,
     SET_AUTH_REDIRECT_PATH,
 } from './actionsTypes';

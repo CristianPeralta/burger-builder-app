@@ -1,21 +1,20 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, Suspense } from 'react';
 import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { authCheckState } from './store/actions/index';
-import asyncComponent from './hoc/asyncComponent/asyncComponent';
 import Layout from './hoc/Layout/Layout';
 import BurgerBuilder from './containers/BurgerBuilder/BurgerBuilder';
 import Logout from './containers/Auth/Logout/Logout';
 
-const asyncCheckout = asyncComponent(() => {
+const Checkout = React.lazy(() => {
   return import('./containers/Checkout/Checkout');
 });
 
-const asyncOrders = asyncComponent(() => {
+const Orders = React.lazy(() => {
   return import('./containers/Orders/Orders');
 });
 
-const asyncAuth = asyncComponent(() => {
+const Auth = React.lazy(() => {
   return import('./containers/Auth/Auth');
 });
 
@@ -28,7 +27,7 @@ const App = props => {
 
   let routes = (
     <Switch>
-      <Route path="/auth" exact component={asyncAuth} />
+      <Route path="/auth" exact render={() => <Auth />} />
       <Route path="/" exact component={BurgerBuilder} />
       <Redirect to="/" />
     </Switch>
@@ -36,9 +35,9 @@ const App = props => {
   if (props.isAuthenticated) {
     routes = (
       <Switch>
-        <Route path="/checkout" component={asyncCheckout} />
-        <Route path="/orders" exact component={asyncOrders} />
-        <Route path="/auth" exact component={asyncAuth} />
+        <Route path="/checkout" render={() => <Checkout />} />
+        <Route path="/orders" exact render={() => <Orders />} />
+        <Route path="/auth" exact render={() => <Auth />} />
         <Route path="/logout" exact component={Logout} />
         <Route path="/" exact component={BurgerBuilder} />
         <Redirect to="/" />
@@ -48,7 +47,7 @@ const App = props => {
   return (
     <div className="App">
       <Layout>
-        {routes}
+        <Suspense fallback={<p>Loading...</p>} >{routes}</Suspense>
       </Layout>
     </div>
   );
